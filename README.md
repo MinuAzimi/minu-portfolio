@@ -37,3 +37,11 @@ Set `width` and `height` to the image's real pixel size; the Personal page layou
 **Add a project:** copy `chargenet.html` as a starting point, replace its text and images, then add a row to `work.html` and, if it should appear on the home page, a card in `index.html`.
 
 **After editing `styles.css` or `site.js`:** change the number after `?v=` in each page's stylesheet and script links so browsers load the new version instead of a cached one.
+
+## Password screen
+
+Every page loads `gate.js` first, which shows a password screen until the right password is entered. After that, the browser remembers it on that device.
+
+To change the password, generate the SHA-256 hash of the new password (on a Mac: `printf 'newpassword' | shasum -a 256`) and replace the `HASH` value at the top of `gate.js`.
+
+This is a light, client-side lock. It keeps casual visitors out, but anyone who knows a direct file or image address can still open it, so don't rely on it for anything confidential.
